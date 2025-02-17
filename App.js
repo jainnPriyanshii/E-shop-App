@@ -1,8 +1,12 @@
-import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import { View, Text } from 'react-native'
+import React from 'react'
 
-export default function App() {
+const App = () => {
   return (
-    <NavigationContainer>{/* Rest of your app code */}</NavigationContainer>
-  );
+    <View>
+      <Text>App</Text>
+    </View>
+  )
 }
+
+export default App
