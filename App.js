@@ -32,11 +32,11 @@ export default function App() {
         tabBarActiveTintColor: '#EF5761',  
         tabBarInactiveTintColor: 'gray', 
 
-        headerShown: true, 
+        headerShown:true,
         header: () => {
          
           const isCart = route.name === 'Cart';
-          return <Header isCart={isCart} />;
+          return route.name !== 'Profile' ?  <Header isCart={isCart} />:null;
         }
      
       })}
