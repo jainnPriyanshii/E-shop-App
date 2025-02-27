@@ -58,7 +58,7 @@ import {
       color: "#FFFFFF",
     },
     container: {
-      marginTop:15,
+      marginTop:8,
      marginBottom:10,
       paddingLeft:3,
     //   paddingTop:StatusBar.currentHeight,

@@ -6,6 +6,7 @@ import HomeScreen from './Screens/HomeScreen';
 import CartScreen from './Screens/CartScreen';
 import ProfileScreen from './Screens/ProfileScreen'
 import CategoryScreen from './Screens/CategoryScreen';
+import Header from './Components/Header';
 
 const Tabs = createBottomTabNavigator()
 export default function App() {
@@ -30,12 +31,20 @@ export default function App() {
         },
         tabBarActiveTintColor: '#EF5761',  
         tabBarInactiveTintColor: 'gray', 
+
+        headerShown: true, 
+        header: () => {
+         
+          const isCart = route.name === 'Cart';
+          return <Header isCart={isCart} />;
+        }
+     
       })}
       >
-        <Tabs.Screen  name='Home' component={HomeScreen} options={{headerShown:false}} />
-        <Tabs.Screen  name='Category' component={CategoryScreen} options={{headerShown:true}}/>
-        <Tabs.Screen  name='Cart' component={CartScreen} options={{headerShown:true}}/>
-        <Tabs.Screen  name='Profile' component={ProfileScreen} options={{headerShown:true}}/>
+        <Tabs.Screen  name='Home' component={HomeScreen} />
+        <Tabs.Screen  name='Category' component={CategoryScreen} />
+        <Tabs.Screen  name='Cart' component={CartScreen} />
+        <Tabs.Screen  name='Profile' component={ProfileScreen} />
         
       </Tabs.Navigator>
       </NavigationContainer>
