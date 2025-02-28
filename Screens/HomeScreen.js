@@ -6,12 +6,32 @@ import ProductCard from '../Components/ProductCard';
 import data from '../Screens/data.json';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from '../Components/Header'
+import { useNavigation } from '@react-navigation/native';
 // import { ScrollView } from 'react-native-gesture-handler';
 
 export default function HomeScreen() {
   const [text ,setText] = useState('')
+  const [products, setProducts] = useState(data.products);
+  const navigation = useNavigation();
+  const handleProductDetails = (item) => {
+    navigation.navigate("PRODUCT_DETAILS", { item });
+  };
+  const toggleFavorite = (item) => {
+    setProducts(
+      products.map((prod) => {
+        if (prod.id === item.id) {
+          console.log("prod: ", prod);
+          return {
+            ...prod,
+            isFavorite: !prod.isFavorite,
+          };
+        }
+        return prod;
+      })
+    );
+  };
   // console.log('Products Data:', data);
-  const products = data.products;
+  // const products = data.products;
   return (
     <SafeAreaView style={styles.container}>
       {/* <Header/> */}
@@ -49,7 +69,11 @@ export default function HomeScreen() {
     <FlatList
         data={products}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => <ProductCard item={item} />} 
+        renderItem={({ item }) => <ProductCard item={item} 
+        handleProductClick={handleProductDetails}
+        toggleFavorite={toggleFavorite}
+        
+        />} 
         numColumns={2}
         contentContainerStyle={styles.listContainer}
         columnWrapperStyle={styles.columnWrapper} 

@@ -6,9 +6,22 @@ import HomeScreen from './Screens/HomeScreen';
 import CartScreen from './Screens/CartScreen';
 import ProfileScreen from './Screens/ProfileScreen'
 import CategoryScreen from './Screens/CategoryScreen';
+import ProductDetailScreen from './Screens/ProductDetailScreen';
 import Header from './Components/Header';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Tabs = createBottomTabNavigator()
+const Stack = createNativeStackNavigator()
+
+const MyHomeStack = () => {
+  return (
+    <Stack.Navigator>
+   
+      <Stack.Screen name="HOME" component={HomeScreen} options={{headerShown:false}} />
+      <Stack.Screen name="PRODUCT_DETAILS" component={ProductDetailScreen} options={{headerShown:false}} />
+    </Stack.Navigator>
+  );
+};
 export default function App() {
   return (
     <NavigationContainer>
@@ -36,12 +49,14 @@ export default function App() {
         header: () => {
          
           const isCart = route.name === 'Cart';
-          return route.name !== 'Profile' ?  <Header isCart={isCart} />:null;
+          return route.name !== 'Profile'&& route.name !== 'PRODUCT_DETAILS' ?  <Header isCart={isCart} />:null;
         }
      
       })}
       >
-        <Tabs.Screen  name='Home' component={HomeScreen} />
+
+
+        <Tabs.Screen  name='Home' component={MyHomeStack} />
         <Tabs.Screen  name='Category' component={CategoryScreen} />
         <Tabs.Screen  name='Cart' component={CartScreen} />
         <Tabs.Screen  name='Profile' component={ProfileScreen} />
