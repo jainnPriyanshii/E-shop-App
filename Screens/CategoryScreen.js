@@ -4,7 +4,8 @@ import React from 'react'
 const CategoryScreen = () => {
   return (
     <View>
-      <Text>CategoryScreen</Text>
+      <Text>COMING SOON</Text>
+      
     </View>
   )
 }
