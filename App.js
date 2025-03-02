@@ -16,17 +16,18 @@ const Stack = createNativeStackNavigator()
 
 const MyHomeStack = () => {
   return (
-    <CartProvider> 
+    
     <Stack.Navigator>
    
       <Stack.Screen name="HOME" component={HomeScreen} options={{headerShown:false}} />
       <Stack.Screen name="PRODUCT_DETAILS" component={ProductDetailScreen} options={{headerShown:false}} />
     </Stack.Navigator>
-    </CartProvider>
+  
   );
 };
 export default function App() {
   return (
+    <CartProvider> 
     <NavigationContainer>
       <Tabs.Navigator
       screenOptions={({ route }) => ({
@@ -66,5 +67,7 @@ export default function App() {
         
       </Tabs.Navigator>
       </NavigationContainer>
+      </CartProvider>
+      
   );
 }
